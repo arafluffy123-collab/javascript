@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-      <h1 class="title">Dynamic Dashboard</h1>
-      <nav>
-        <button id="toggleTheme">Toggle Theme</button>
-        <button id="showQuote">Show Quote</button>
-      </nav>
-    </header>
-    <section class="clock-section">
-      <h2>Current Time</h2>
-      <p id="currentTime"></p>
-    </section>
-    <section class="quote-section">
-      <h2>Random Quote</h2>
-      <blockquote id="quoteText"></blockquote>
-      <cite id="quoteAuthor"></cite>
-    </section>
-    <section class="weather-section">
-      <h2>Local Weather (Mock)</h2>
-      <div id="weatherInfo"></div>
-    </section>
-    <footer>
-      <p>&copy; 2026 Dynamic Dashboard</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extended Dashboard</title>
+
+  <!-- ------------------------------------------------- -->
+  <!-- 1️⃣  Link to external stylesheet                     -->
+  <!-- ------------------------------------------------- -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ------------------------------------------------- -->
+  <!-- 2️⃣  Meta information (optional, for SEO)          -->
+  <!-- ------------------------------------------------- -->
+  <meta name="description" content="A feature‑rich demo dashboard with clock, quotes, weather, theme toggle, and more.">
+</head>
+<body>
+
+  <!-- ------------------------------------------------- -->
+  <!-- 3️⃣  Header – title and navigation buttons         -->
+  <!-- ------------------------------------------------- -->
+  <header>
+    <h1 class="title">Extended Dashboard</h1>
+    <nav>
+      <button id="toggleTheme">Toggle Theme</button>
+      <button id="showQuote">New Quote</button>
+      <button id="showWeather">Refresh Weather</button>
+    </nav>
+  </header>
+
+  <!-- ------------------------------------------------- -->
+  <!-- 4️⃣  Clock section                                 -->
+  <!-- ------------------------------------------------- -->
+  <section class="clock-section">
+    <h2>Current Time</h2>
+    <p id="currentTime"></p>
+  </section>
+
+  <!-- ------------------------------------------------- -->
+  <!-- 5️⃣  Quote section                                 -->
+  <!-- ------------------------------------------------- -->
+  <section class="quote-section">
+    <h2>Random Quote</h2>
+    <blockquote id="quoteText"></blockquote>
+    <cite id="quoteAuthor"></cite>
+  </section>
+
+  <!-- ------------------------------------------------- -->
+  <!-- 6️⃣  Weather section (mock data)                  -->
+  <!-- ------------------------------------------------- -->
+  <section class="weather-section">
+    <h2>Local Weather (Mock)</h2>
+    <div id="weatherInfo"></div>
+  </section>
+
+  <!-- ------------------------------------------------- -->
+  <!-- 7️⃣  Footer                                        -->
+  <!-- ------------------------------------------------- -->
+  <footer>
+    <p>&copy; 2026 Extended Dashboard – built by Araf</p>
+  </footer>
+
+  <!-- ------------------------------------------------- -->
+  <!-- 8️⃣  Load the JavaScript module                     -->
+  <!-- ------------------------------------------------- -->
+  <script src="script.js"></script>
+</body>
 </html>
