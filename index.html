@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Hello, World!</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1 class="title">Hello World!</h1>
-    <p id="currentTime"></p>
+    <header>
+      <h1 class="title">Dynamic Dashboard</h1>
+      <nav>
+        <button id="toggleTheme">Toggle Theme</button>
+        <button id="showQuote">Show Quote</button>
+      </nav>
+    </header>
+    <section class="clock-section">
+      <h2>Current Time</h2>
+      <p id="currentTime"></p>
+    </section>
+    <section class="quote-section">
+      <h2>Random Quote</h2>
+      <blockquote id="quoteText"></blockquote>
+      <cite id="quoteAuthor"></cite>
+    </section>
+    <section class="weather-section">
+      <h2>Local Weather (Mock)</h2>
+      <div id="weatherInfo"></div>
+    </section>
+    <footer>
+      <p>&copy; 2026 Dynamic Dashboard</p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
