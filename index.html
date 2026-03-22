@@ -1,14 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Extended Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mega Demo App</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Favicons and meta for progressive feel -->
+  <meta name="theme-color" content="#0b1020" />
 </head>
 <body>
-  <!-- …your existing markup… -->
-  <script src="app.js"></script>
-  <script src="script.js"></script>
+  <div id="app" class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#6EE7B7"/>
+              <stop offset="1" stop-color="#3B82F6"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#g1)"/>
+          <path d="M20 36c6-8 18-8 24 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="24" r="4" fill="#fff"/>
+        </svg>
+        <h1 class="title">Mega Demo App</h1>
+      </div>
+
+      <div class="top-actions">
+        <input id="globalSearch" class="search" placeholder="Search notes, files, commands" />
+        <button id="btnNew" class="btn">New</button>
+        <button id="btnExport" class="btn">Export</button>
+        <button id="btnImport" class="btn">Import</button>
+        <button id="btnTheme" class="btn">Theme</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2 class="panel-title">Files</h2>
+          <ul id="fileList" class="file-list" aria-label="Files"></ul>
+          <div class="file-controls">
+            <button id="btnAddFile" class="btn small">Add File</button>
+            <button id="btnRemoveFile" class="btn small danger">Remove</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title">Tools</h2>
+          <div class="tools">
+            <button data-tool="editor" class="tool active">Editor</button>
+            <button data-tool="preview" class="tool">Preview</button>
+            <button data-tool="terminal" class="tool">Terminal</button>
+            <button data-tool="visual" class="tool">Visualizer</button>
+            <button data-tool="audio" class="tool">Audio</button>
+            <button data-tool="notes" class="tool">Notes</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title">Shortcuts</h2>
+          <ul class="shortcuts">
+            <li><strong>Ctrl S</strong> Save</li>
+            <li><strong>Ctrl B</strong> Toggle Sidebar</li>
+            <li><strong>Ctrl /</strong> Toggle Comment</li>
+            <li><strong>Ctrl Enter</strong> Run</li>
+          </ul>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <div class="split">
+          <div class="left-pane">
+            <div class="editor-toolbar">
+              <select id="languageSelect" class="select">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="js">JavaScript</option>
+                <option value="md">Markdown</option>
+              </select>
+              <button id="btnRun" class="btn primary">Run</button>
+              <button id="btnFormat" class="btn">Format</button>
+              <button id="btnUndo" class="btn">Undo</button>
+              <button id="btnRedo" class="btn">Redo</button>
+            </div>
+
+            <textarea id="editor" class="editor" spellcheck="false" aria-label="Code editor"></textarea>
+            <div class="statusbar">
+              <span id="cursorPos">Ln 1, Col 1</span>
+              <span id="fileStats">0 bytes</span>
+              <span id="liveStatus">Idle</span>
+            </div>
+          </div>
+
+          <div class="right-pane">
+            <div id="preview" class="panel preview">
+              <div class="panel-title-row">
+                <h2 class="panel-title">Live Preview</h2>
+                <div class="preview-controls">
+                  <label><input id="toggleSandbox" type="checkbox" checked /> Sandbox</label>
+                  <label><input id="toggleAutoRun" type="checkbox" /> Auto Run</label>
+                </div>
+              </div>
+              <iframe id="previewFrame" class="preview-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+            </div>
+
+            <div id="terminal" class="panel terminal hidden">
+              <div class="panel-title-row">
+                <h2 class="panel-title">Terminal</h2>
+                <div class="terminal-controls">
+                  <button id="btnClearTerminal" class="btn small">Clear</button>
+                </div>
+              </div>
+              <div id="terminalOutput" class="terminal-output" aria-live="polite"></div>
+              <div class="terminal-input">
+                <input id="terminalCmd" placeholder="Type command and press Enter" />
+              </div>
+            </div>
+
+            <div id="visualizer" class="panel visualizer hidden">
+              <h2 class="panel-title">Canvas Visualizer</h2>
+              <canvas id="visualCanvas" width="800" height="400"></canvas>
+              <div class="visual-controls">
+                <button id="btnStartVisual" class="btn">Start</button>
+                <button id="btnStopVisual" class="btn danger">Stop</button>
+                <input id="visualSeed" placeholder="Seed" />
+              </div>
+            </div>
+
+            <div id="audioPanel" class="panel audio hidden">
+              <h2 class="panel-title">Audio Synth</h2>
+              <div class="audio-controls">
+                <button id="btnPlayTone" class="btn">Play Tone</button>
+                <button id="btnStopTone" class="btn danger">Stop</button>
+                <label>Wave
+                  <select id="waveSelect">
+                    <option value="sine">Sine</option>
+                    <option value="square">Square</option>
+                    <option value="sawtooth">Sawtooth</option>
+                    <option value="triangle">Triangle</option>
+                  </select>
+                </label>
+                <label>Freq <input id="freqRange" type="range" min="20" max="2000" value="440" /></label>
+              </div>
+              <div id="audioLog" class="audio-log"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="notes panel">
+            <h2 class="panel-title">Notes</h2>
+            <textarea id="notesArea" class="notes-area" placeholder="Quick notes"></textarea>
+            <div class="notes-actions">
+              <button id="btnSaveNotes" class="btn">Save Notes</button>
+              <button id="btnClearNotes" class="btn danger">Clear</button>
+            </div>
+          </div>
+
+          <div class="meta panel">
+            <h2 class="panel-title">App Meta</h2>
+            <pre id="metaOutput" class="meta-output"></pre>
+            <div class="meta-actions">
+              <button id="btnDump" class="btn">Dump State</button>
+              <button id="btnReset" class="btn danger">Reset App</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Built with vanilla JS CSS and HTML</div>
+      <div id="clock">--:--:--</div>
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
